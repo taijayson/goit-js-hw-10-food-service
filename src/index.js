@@ -1,6 +1,5 @@
 import './styles.css';
-import './main.scss';
 
-import newJsFunc from "./js/main.js"
+import './js/menu';
 
-console.log(newJsFunc("dadasdasd"))
+
