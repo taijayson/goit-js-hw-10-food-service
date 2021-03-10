@@ -11,15 +11,18 @@ const themeSwitch = document.querySelector('.theme-switch__toggle');
 themeSwitch.addEventListener('change', onChange);
 
 function onChange(event) {
+
+    const replaceTheme = (oldTheme, newTheme) => {
+        body.classList.add(newTheme);
+        body.classList.remove(oldTheme);
+        localStorage.setItem('theme', newTheme)
+    }
     
     if (event.target.checked) {
-        body.classList.remove(Theme.LIGHT);
-        body.classList.add(Theme.DARK);
-        localStorage.setItem('theme', Theme.DARK)   
+        replaceTheme(Theme.LIGHT, Theme.DARK);
+    
     } else {
-        body.classList.remove(Theme.DARK);
-        body.classList.add(Theme.LIGHT);
-        localStorage.setItem('theme', Theme.LIGHT)
+        replaceTheme(Theme.DARK, Theme.LIGHT);
     }
 
 
@@ -30,7 +33,4 @@ const currentTheme = localStorage.getItem('theme');
     if (currentTheme === Theme.DARK) {
         themeSwitch.checked = 'checked';
         body.classList.add(Theme.DARK);
-    
-    } else {
-        body.classList.add(Theme.LIGHT);
     }  
